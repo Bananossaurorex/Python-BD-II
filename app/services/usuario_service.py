@@ -26,18 +26,18 @@ class UsuarioService:
 
     def deletar_usuario(self):
         try:
-            email_deletar = input("Digite o email que vc deseja deletar")
+            email_deletar = input("Digite o email que vc deseja deletar: ")
             usuario = self.repository.pesquisar_usuario(email = email_deletar)
             if usuario:
+                self.repository.excluir_usuario(usuario)
                 print("Usuario deletado com sucesso!")
-                self.repository.excluir_usuario(Usuario)
                 return
-            print("Usuario não encontrado.")
-        
-        except self:
+            
+        except TypeError as erro:
             print(f"Erro ao salvar usuário: {erro}")
         except Exception as erro:
             print (f"ocorreu um erro inesperado: {erro}")
+            print (f"ocorreu um erro inesperado: {erro.with_traceback()}")
     
     def listar_todos_usuarios(self):
         return self.repository.listar_todos_usuarios()
