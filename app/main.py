@@ -10,7 +10,8 @@ def main():
     # Criando um usuário.
     service.criar_usuario()
     service.deletar_usuario()
-
+    service.modificar_usuario()
+    
     # Listando todos os usuários.
     print("\nListando todos os usuários.")
     lista_usuarios = service.listar_todos_usuarios()

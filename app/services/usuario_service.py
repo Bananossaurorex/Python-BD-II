@@ -31,13 +31,34 @@ class UsuarioService:
             if usuario:
                 self.repository.excluir_usuario(usuario)
                 print("Usuario deletado com sucesso!")
+
+                return
+            
+            print("Usuário não encontrado")
+        except TypeError as erro:
+            print(f"Erro ao salvar usuário: {erro}")
+        except Exception as erro:
+            print (f"ocorreu um erro inesperado: {erro}")
+            
+    def modificar_usuario(self):
+        try:
+            email_alterar = input("Digite o email que vc deseja alterar: ")
+            usuario = self.repository.pesquisar_usuario(email = email_alterar)
+            if usuario:
+                usuario.nome = input("Digite seu nome: ")
+                usuario.email= input("Digte seu email: ")
+                usuario.senha= input ("Digite sua senha: ")
+                
+                self.repository.atualizar_usuario(usuario)
+                print("Usuario alterado com sucesso!")
                 return
             
         except TypeError as erro:
             print(f"Erro ao salvar usuário: {erro}")
         except Exception as erro:
             print (f"ocorreu um erro inesperado: {erro}")
-            print (f"ocorreu um erro inesperado: {erro.with_traceback()}")
     
+
+
     def listar_todos_usuarios(self):
         return self.repository.listar_todos_usuarios()
