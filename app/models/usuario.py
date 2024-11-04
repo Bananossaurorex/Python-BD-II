@@ -4,6 +4,8 @@ from config.connection import db
 
 Base = declarative_base()
 
+
+
 class Usuario(Base):
     __tablename__ = "usuarios"
 
