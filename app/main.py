@@ -2,6 +2,10 @@ from repositories.usuario_repository import UsuarioRepository
 from services.usuario_service import UsuarioService
 from config.connection import Session
 import os
+import sys
+
+#Adiciona o diretrorio app como diretorio padrão
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__),'..')))
 
 def limpar_tela():
     return os.system("cls || clear")

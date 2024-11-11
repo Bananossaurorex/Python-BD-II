@@ -1,5 +1,5 @@
 import pytest
-from models.usuario import Usuario
+from app.models.usuario import Usuario
 
 
 
@@ -12,5 +12,17 @@ def test_nome_valido(criar_usuario):
 
 
 def test_nome_vazio_invalido():
-        with pytest.raises(TypeError, match = "O nome não pode ser vazio"):
+        with pytest.raises(ValueError, match = "O nome não pode ser vazio"):
             Usuario("","brenosalvavidas@gmail.com","123")
+
+def test_nome_apenas_letras():
+      with pytest.raises(TypeError, match = "Digite apenas letras"):
+            Usuario(12323432,"brenosalvavidas@gmail.com","123")
+
+def test_email_vazio_invalido():
+        with pytest.raises(TypeError, match = "O email não pode ser vazio"):
+            Usuario("Breno","","123")
+
+def test_senha_vazio_invalido():
+        with pytest.raises(TypeError, match = "A senha não pode estar vazia"):
+            Usuario("Breno","brenosalvavidas@gmail.com","")
