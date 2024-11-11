@@ -1,5 +1,5 @@
 import pytest
-from ..models.usuario import Usuario
+from models.usuario import Usuario
 
 
 

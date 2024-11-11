@@ -1,4 +1,4 @@
-from ..models.usuario import Usuario
+from models.usuario import Usuario
 from sqlalchemy.orm import Session
 
 class UsuarioRepository:
@@ -21,6 +21,8 @@ class UsuarioRepository:
         self.session.commit()
         self.session.refresh(usuario)
 
+    def pesquisar_usuario_id(self,id:int):
+        return self.session.query(Usuario).filter_by(id=id).first()
 
     def listar_todos_usuarios(self):
         return self.session.query(Usuario).all()

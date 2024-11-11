@@ -1,5 +1,5 @@
-from ..models.usuario import Usuario
-from ..repositories.usuario_repository import UsuarioRepository
+from models.usuario import Usuario
+from repositories.usuario_repository import UsuarioRepository
 
 class UsuarioService:
     def __init__(self,repository: UsuarioRepository) -> None:
@@ -7,7 +7,7 @@ class UsuarioService:
     
     def criar_usuario(self):
         try:
-            nome = input("Digite seu nome: ")
+            nome= input("Digite seu nome: ")
             email= input("Digte seu email: ")
             senha= input ("Digite sua senha: ")
 
@@ -58,7 +58,19 @@ class UsuarioService:
         except Exception as erro:
             print (f"ocorreu um erro inesperado: {erro}")
     
-
+    def pesquisar_id(self):
+        try:
+            id_pesquisar = input("Digite o id que você deseja pesquisar: ")
+            usuario = self.repository.pesquisar_usuario_id(id_pesquisar)
+            if usuario:
+                print(f"{usuario.id} - {usuario.nome} - {usuario.email} - {usuario.senha}")
+                return
+            print("Usuario não encontrado!")
+        
+        except TypeError as erro:
+            print(f"Erro ao salvar usuário: {erro}")
+        except Exception as erro:
+            print (f"ocorreu um erro inesperado: {erro}")
 
     def listar_todos_usuarios(self):
         return self.repository.listar_todos_usuarios()
