@@ -7,10 +7,19 @@ def main():
     repository = UsuarioRepository(session)
     service = UsuarioService(repository)
 
-    # Criando um usuário.
-    service.criar_usuario()
-    service.deletar_usuario()
-    service.modificar_usuario()
+    opcao = int(input("Digite a opção: "))
+    print("1- Criar usuario")
+    print("2- Deletar usuario")
+    print("3- Modificar usuario")
+    match(opcao):
+        case 1:
+            service.criar_usuario()
+        
+        case 2 :
+            service.deletar_usuario()
+        
+        case 3:
+            service.modificar_usuario()
     
     # Listando todos os usuários.
     print("\nListando todos os usuários.")
