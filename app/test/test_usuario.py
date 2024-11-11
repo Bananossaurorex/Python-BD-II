@@ -26,3 +26,7 @@ def test_email_vazio_invalido():
 def test_senha_vazio_invalido():
         with pytest.raises(TypeError, match = "A senha não pode estar vazia"):
             Usuario("Breno","brenosalvavidas@gmail.com","")
+
+def test_senha_muito_grande():
+      with pytest.raises(TypeError, match= "A senha só pode possuir até 10 caracteres"):
+            Usuario("Breno","brenosalvavidas@gmail.com","1234567891011")

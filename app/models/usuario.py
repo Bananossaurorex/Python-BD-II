@@ -36,6 +36,8 @@ class Usuario(Base):
     def _senha_test(self,senha):
         if not senha.strip():
             raise TypeError("A senha não pode estar vazia")
+        if len(senha) > 10:
+            raise TypeError("A senha só pode possuir até 10 caracteres")
         return senha
 
 # Criando tabela no banco de dados
